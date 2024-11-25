@@ -9,8 +9,8 @@ const Footer: React.FC = () => {
           <Image
             src="/FTI-MasterLogo_CMYK-White.png" // Path relative to the public directory
             alt="FTI Master Logo"
-            width={200} // Adjust the width as needed
-            height={90} // Adjust the height as needed
+            width={130} // Adjust the width as needed
+            height={60} // Adjust the height as needed
           />
         </div>
       </footer>

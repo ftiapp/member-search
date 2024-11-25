@@ -1,5 +1,5 @@
 
-import { connectToDatabase } from '../lib/db';
+import { connectToDatabase } from '../../lib/db';
 import sql from 'mssql';
 export default async function handler(req, res) {
     if (req.method !== 'GET') {
@@ -11,7 +11,7 @@ export default async function handler(req, res) {
         
         const query = `
             SELECT DISTINCT
-            [MEMBER_GROUP_NAME]
+            [MEMBER_GROUP_NAME],[MEMBER_GROUP_NAME_EN]
             FROM [FTI].[dbo].[Q_MEMBER_PROVINCE_GROUP]
             WHERE MEMBER_GROUP_NAME IS NOT NULL
             ORDER BY MEMBER_GROUP_NAME

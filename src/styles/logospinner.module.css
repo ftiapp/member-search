@@ -1,30 +1,35 @@
-.logoContainer {
-  position: fixed; /* Ensure it stays relative to the viewport */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Center horizontally and vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.shimmer {
-  animation: shimmer 2s infinite; /* Shimmering effect */
-}
-
-@keyframes shimmer {
+@keyframes spinFastThenSlow {
   0% {
-    opacity: 1;
-    filter: brightness(1);
+    transform: rotateY(0deg);
   }
-  50% {
-    opacity: 0.8;
-    filter: brightness(1.5);
+  30% {
+    transform: rotateY(360deg); /* หมุนเร็วรอบแรก (1 รอบ) */
+  }
+  60% {
+    transform: rotateY(720deg); /* หมุนเร็วรอบที่สอง (2 รอบ) */
   }
   100% {
-    opacity: 1;
-    filter: brightness(1);
+    transform: rotateY(1080deg); /* หมุนช้ากว่า (รอบที่ 3) */
   }
+}
+
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logoContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingText {
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: 'Prompt, sans-serif';
+  color: #666;
 }

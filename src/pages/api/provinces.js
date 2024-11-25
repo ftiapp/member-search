@@ -1,5 +1,5 @@
 
-import { connectToDatabase } from '../lib/db'
+import { connectToDatabase } from '../../lib/db'
 import sql from 'mssql';
 export default async function handler(req, res) {
     if (req.method !== 'GET') {

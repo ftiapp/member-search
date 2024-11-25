@@ -1,5 +1,5 @@
 
-import { connectToDatabase } from '../lib/db'
+import { connectToDatabase } from '../../lib/db'
 import sql from 'mssql';
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -17,8 +17,9 @@ export default async function handler(req, res) {
     const province = decodeURIComponent(req.query.province || '');
     const industry_group_name = decodeURIComponent(req.query.industry_group_name || '');
     const province_group_name = decodeURIComponent(req.query.province_group_name || '');
+    const selectedFilter = req.query.selectedFilter || 'all'; // รับ selectedFilter
 
-    console.log('Received search query:', { q, member_type_code, province, industry_group_name, province_group_name });
+    console.log('Received search query:', { q, member_type_code, province, industry_group_name, province_group_name, selectedFilter });
 
     if (!q && !member_type_code && !province && !industry_group_name && !province_group_name) {
       return res.status(400).json({ message: 'At least one search parameter is required' });
@@ -29,10 +30,11 @@ export default async function handler(req, res) {
       .input('memberTypeCode', sql.NVarChar, member_type_code || null)
       .input('province', sql.NVarChar, province || null)
       .input('industryGroupName', sql.NVarChar, industry_group_name || null)
-      .input('provinceGroupName', sql.NVarChar, province_group_name || null);
+      .input('provinceGroupName', sql.NVarChar, province_group_name || null)
+      .input('selectedFilter', sql.NVarChar, selectedFilter) // ส่ง selectedFilter ไปด้วย
+      .input('MEMBER_STATUS_CODE', sql.NVarChar, 'A');  // Query เฉพาะสมาชิกที่ยัง active
 
     const result = await request.execute('SearchMembers');
-
     return res.status(200).json(result.recordset);
   } catch (error) {
     console.error('Error searching members:', error.message, error.stack);

@@ -1,5 +1,5 @@
 
-import { connectToDatabase } from '../lib/db' // Adjust the import path as needed
+import { connectToDatabase } from '../../lib/db' // Adjust the import path as needed
 import sql from 'mssql';
 
 export default async function handler(req, res) {

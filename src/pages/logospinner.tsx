@@ -3,37 +3,43 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { CircularProgress } from '@mui/material';
 import styles from '../styles/logospinner.module.css';
-
-const LogoSpinner: React.FC<{ loading: boolean }> = ({ loading }) => {
+interface LogoSpinnerProps {
+  loading: boolean;
+}
+const LogoSpinner: React.FC<LogoSpinnerProps> = ({ loading }) => {
   const [showLogo, setShowLogo] = useState(false);
 
   useEffect(() => {
-    if (loading) {
-      setShowLogo(true);
-      setTimeout(() => {
-        setShowLogo(false);
-      },50000); // Show logo for 3 seconds before hiding
-    } else {
-      setShowLogo(false);
-    }
+    setShowLogo(loading); // Show logo while loading is true
   }, [loading]);
 
   return (
     <div className={styles.logoContainer}>
       {showLogo && (
-        <div className={styles.shimmer}>
-          <Image
-            src="/FTI-MasterLogo_RGB_forLightBG.png"
-            alt="FTI Master Logo"
-            width={140}
-            height={65}
-          
-          />
-        </div>
-      )}
-      {loading && (
-        <div className={styles.shimmer}>
-        
+        <div className={styles.logoContent}>
+          {/* Rotating Logo */}
+          <div
+            style={{
+              width: '90px',
+              height: '90px',
+              animation: 'spinFastThenSlow 7s infinite ease-in-out',
+              transformStyle: 'preserve-3d',
+            }}
+          >
+            <img
+              src="/Logo_FTI.webp"
+              alt="Loading Logo"
+              style={{
+                width: '100%',
+                height: '100%',
+              }}
+            />
+          </div>
+
+          {/* Loading Text */}
+          <p style={{ marginTop: '10px', fontFamily: 'Prompt, sans-serif', fontSize: '14px' }}>
+            กำลังค้นหาสมาชิก...
+          </p>
         </div>
       )}
     </div>

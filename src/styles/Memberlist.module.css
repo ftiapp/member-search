@@ -1,0 +1,24 @@
+/* MemberList.module.css */
+@media (max-device-width: 480px) {
+    .orderColumn {
+        width: 5%; /* ซ่อนคอลัมน์ "ลำดับ" */
+    }
+    .responsiveTable {
+      font-size: 12px; /* ลดขนาดฟอนต์ */
+    }
+    .detailsColumn {
+      width: 20%;
+    }
+    .memberCodeColumn {
+      width: 2%;
+    }
+    .companyNameColumn {
+      width: 20%;
+    }
+  }
+  
+  @media (max-device-width: 480px) {
+    .responsiveTable {
+      font-size: 10px; /* ฟอนต์ปกติสำหรับหน้าจอใหญ่ */
+    }
+  }

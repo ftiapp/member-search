@@ -1,0 +1,29 @@
+/* ใช้สำหรับจอเล็ก */
+@media (max-width: 480px) {
+    .order-column {
+      display: none; /* ซ่อนคอลัมน์ลำดับ */
+    }
+  
+    .details-column {
+      width: 20%; /* ปรับขนาดคอลัมน์ */
+    }
+  
+    .member-code-column {
+      width: 30%;
+    }
+  
+    .company-name-column {
+      width: 50%;
+    }
+  
+    .responsive-table {
+      font-size: 5px; /* ย่อขนาดฟอนต์ */
+    }
+  }
+  
+  /* สำหรับจอใหญ่ */
+  @media (min-width: 481px) {
+    .responsive-table {
+      font-size: 14px; /* ขนาดฟอนต์ปกติ */
+    }
+  }
